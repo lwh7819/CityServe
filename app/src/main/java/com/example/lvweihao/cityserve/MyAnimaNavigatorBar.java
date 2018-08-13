@@ -26,7 +26,7 @@ import java.util.Map;
  * Created by lv.weihao on 2017/7/4.
  * 滑动定位导航栏
  */
-public class MyAnimaNavigatorBar2 extends FrameLayout{
+public class MyAnimaNavigatorBar extends FrameLayout{
     private static Integer[] colors = {R.color.blue, R.color.orange, R.color.purple, R.color.green, R.color.red};
 
     private ObservableScrollView mScrollView;
@@ -66,14 +66,14 @@ public class MyAnimaNavigatorBar2 extends FrameLayout{
         }
     };
 
-    public MyAnimaNavigatorBar2(Context context, List mTitleList) {
+    public MyAnimaNavigatorBar(Context context, List mTitleList) {
         super(context);
         this.mContext = context;
         this.mTitleList = mTitleList;
         init(context);
     }
 
-    public MyAnimaNavigatorBar2(Context context, List mTitleList, List mTitleBackgroundColorList) {
+    public MyAnimaNavigatorBar(Context context, List mTitleList, List mTitleBackgroundColorList) {
         super(context);
         this.mContext = context;
         this.mTitleList = mTitleList;
@@ -81,14 +81,14 @@ public class MyAnimaNavigatorBar2 extends FrameLayout{
         init(context);
     }
 
-    public MyAnimaNavigatorBar2(Context context, AttributeSet attrs) {
+    public MyAnimaNavigatorBar(Context context, AttributeSet attrs) {
         super(context, attrs);
         if (this.mTitleList != null && this.mTitleBackgroundColorList != null) {
             init(context);
         }
     }
 
-    public MyAnimaNavigatorBar2(Context context, AttributeSet attrs, int defStyleAttr) {
+    public MyAnimaNavigatorBar(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
     }
@@ -120,12 +120,7 @@ public class MyAnimaNavigatorBar2 extends FrameLayout{
         if (mTitleBackgroundColorList == null) {
             mTitleBackgroundColorList = new ArrayList();
             for (int i = 0; i < mTitleList.size(); i++) {
-                int j = 0;
-                if (i > 4) {
-                    j = i % 5;
-                } else {
-                    j = i;
-                }
+                int j = i % colors.length;
                 mTitleBackgroundColorList.add(getResources().getColor(colors[j]));
             }
         }
@@ -424,5 +419,16 @@ public class MyAnimaNavigatorBar2 extends FrameLayout{
         MyAnimTextView myAnimTextView = new MyAnimTextView(mContext, (String) mTitleList.get(indx),
                 mTextSize, (int) mTitleBackgroundColorList.get(indx));
         return myAnimTextView;
+    }
+
+    public void initPostion(final int postion) {
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                tag = postion;
+                ((MyAnimTextView)llTitleBar.getChildAt(postion)).doDownAnima();
+                slowlyVerticalScrollTo(getScrollToPosition(postion));
+            }
+        }, 100);
     }
 }

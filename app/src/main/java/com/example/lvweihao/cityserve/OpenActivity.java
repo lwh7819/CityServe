@@ -2,10 +2,6 @@ package com.example.lvweihao.cityserve;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,8 +29,9 @@ public class OpenActivity extends AppCompatActivity {
 //        FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 //        frameLayout.addView(view, layoutParams);
 
-        MyAnimaNavigatorBar2 myAnimaNavigatorBar2 = (MyAnimaNavigatorBar2) findViewById(R.id.mybar);
-        myAnimaNavigatorBar2.setAdaper(this, mTitleList);
+        MyAnimaNavigatorBar myAnimaNavigatorBar = (MyAnimaNavigatorBar) findViewById(R.id.mybar);
+        myAnimaNavigatorBar.setAdaper(this, mTitleList);
+        myAnimaNavigatorBar.initPostion(0);
 
     }
 }

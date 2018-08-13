@@ -8,11 +8,11 @@
             <!--android:id="@+id/frameLayout"-->
             <!--android:layout_width="match_parent"-->
             <!--android:layout_height="match_parent"/>-->
-    <com.example.lvweihao.cityserve.MyAnimaNavigatorBar2
+    <com.example.lvweihao.cityserve.MyAnimaNavigatorBar
             android:id="@+id/mybar"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-    </com.example.lvweihao.cityserve.MyAnimaNavigatorBar2>
+    </com.example.lvweihao.cityserve.MyAnimaNavigatorBar>
 
 </LinearLayout>
